@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
-import InputsForm from "./components/InputsForm";
+import InputsForm from "./components/inputsForm";
+import moment from 'moment';
+import Calendar from "./components/calendar";
 
 class App extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
+    state = {
             inputs: {
                 startDate: "",
                 days: "",
-                country: ""
+                countryCode: ""
             },
             startDate: null,
             endDate: null
         };
-    }
 
     onInputChange = ({ name, value }) => {
         const inputs = this.state.inputs;
@@ -27,12 +25,16 @@ class App extends Component {
 
     onFormSubmit = e => {
         e.preventDefault();
+        const { inputs } = this.state;
+        const startDate = moment(inputs.startDate);
+        const endDate = startDate.clone().add(inputs.days -1, "d");
+
+        this.setState({ startDate, endDate });
     };
 
     validate = () => {
         const { inputs } = this.state;
-
-        return true;
+        return inputs.startDate && inputs.days && inputs.countryCode;
     };
 
     render() {
@@ -46,6 +48,15 @@ class App extends Component {
                     onFormSubmit={this.onFormSubmit}
                     isValid={this.validate()}
                 />
+
+                {
+                    this.state.startDate && this.state.endDate
+                        ? <Calendar
+                            startDate={ this.state.startDate }
+                            endDate={ this.state.endDate }
+                            countryCode={ this.state.inputs.countryCode }/>
+                        : <p>No results...</p>
+                }
 
             </div>
         );

@@ -3,11 +3,7 @@ import './index.css';
 
 class InputsForm extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = this.props.inputs;
-    }
+    state = this.props.inputs;
 
     onChange = e => {
         const name = e.target.name;
@@ -32,6 +28,7 @@ class InputsForm extends Component {
                         type="date"
                         value={this.state.startDate}
                         onChange={this.onChange}
+                        required
                     />
                 </div>
 
@@ -43,6 +40,7 @@ class InputsForm extends Component {
                         type="number"
                         value={this.state.days}
                         onChange={this.onChange}
+                        required
                     />
                 </div>
 
@@ -50,10 +48,11 @@ class InputsForm extends Component {
                     <label>Country</label>
                     <input
                         className="form-control"
-                        name="country"
+                        name="countryCode"
                         type="text"
-                        value={this.state.country}
+                        value={this.state.countryCode}
                         onChange={this.onChange}
+                        required
                     />
                 </div>
 
