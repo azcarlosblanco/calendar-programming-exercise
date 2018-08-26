@@ -33,7 +33,7 @@ class InputsForm extends Component {
                 </div>
 
                 <div className="form-group">
-                    <label>Number of Days</label>
+                    <label>Days</label>
                     <input
                         className="form-control"
                         name="days"
@@ -45,7 +45,7 @@ class InputsForm extends Component {
                 </div>
 
                 <div className="form-group">
-                    <label>Country</label>
+                    <label>Country Code</label>
                     <input
                         className="form-control"
                         name="countryCode"

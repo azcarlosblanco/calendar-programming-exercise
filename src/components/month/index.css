@@ -1,0 +1,19 @@
+
+.month {
+    display: block;
+    width: 324px;
+    margin: 20px auto;
+}
+
+.header {
+    font-weight: bold;
+    background-color: #e7f7d3;
+    margin: 0 2px;
+    padding: 2px;
+}
+
+.day-name {
+    display: inline-block;
+    width: 45px;
+    font-size: 15px;
+}

@@ -1,0 +1,21 @@
+.day {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    padding: 6px;
+    margin: 2px;
+    background-color: #b3d688;
+    vertical-align: middle;
+}
+
+.day-weekend {
+    background-color: #f9fd00;
+}
+
+.day-holiday {
+    background-color: #ff0300;
+}
+
+.day-invalid {
+    background-color: #dddddd;
+}

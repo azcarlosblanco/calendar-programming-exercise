@@ -1,6 +1,7 @@
-import React from 'react';
-import moment from "moment";
+import React, { Fragment } from 'react';
 import "./index.css";
+import moment from "moment";
+import Month from "../month";
 
 const Calendar = ({ startDate, endDate, countryCode }) => {
 
@@ -10,14 +11,19 @@ const Calendar = ({ startDate, endDate, countryCode }) => {
         .fill(0)
         .map((item, index) => startMonth.clone().add(index, 'months'));
 
+    const source = { startDate, endDate, countryCode };
+
     return (
-        <div className="calendar">
+        <Fragment>
             {
                 monthsRange.map((date, index) => (
-                    <p key={index}>index</p>)
+                    <Month
+                        key={index}
+                        date={date}
+                        source={ source }/>)
                 )
             }
-        </div>
+        </Fragment>
     );
 };
 
