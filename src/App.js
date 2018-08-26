@@ -1,21 +1,55 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import InputsForm from "./components/InputsForm";
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            inputs: {
+                startDate: "",
+                days: "",
+                country: ""
+            },
+            startDate: null,
+            endDate: null
+        };
+    }
+
+    onInputChange = ({ name, value }) => {
+        const inputs = this.state.inputs;
+        inputs[name] = value;
+
+        this.setState({ inputs });
+    };
+
+    onFormSubmit = e => {
+        e.preventDefault();
+    };
+
+    validate = () => {
+        const { inputs } = this.state;
+
+        return true;
+    };
+
+    render() {
+        return (
+            <div className="App">
+                <h1>Programming Exercise UI for Number8</h1>
+
+                <InputsForm
+                    inputs={this.state.inputs}
+                    onInputChange={this.onInputChange}
+                    onFormSubmit={this.onFormSubmit}
+                    isValid={this.validate()}
+                />
+
+            </div>
+        );
+    }
 }
 
 export default App;
